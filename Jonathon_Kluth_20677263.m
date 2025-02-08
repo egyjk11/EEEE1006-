@@ -66,13 +66,20 @@ roots(numbers);
 %Question b)
 Epsilon = 8.85418782e-12;
 meu = 4*pi*1e-7;
-units = 'm/s';
+
 
 c = sqrt(1/(meu*Epsilon));
 
 %speedstr = sprintf('The speed of light is %f m/s', c);
 %disp(speedstr);
 
+%Question bii) 
+
+lambda_range = [28e-6, 0.6e-6];
+
+frequency_range = c./lambda_range;
+
+%fprintf('Frequency range: %.2e Hz to %.2e Hz\n', frequency_range(1), frequency_range(2));
 
 
 
@@ -81,6 +88,11 @@ c = sqrt(1/(meu*Epsilon));
 
 %% Q4 - EXAMPLES [12 MARKS]
 clear
+
+% Question a)
+%The clear command clears text from the command window. 
+
+x=1.5; 
 
 
 
