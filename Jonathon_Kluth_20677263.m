@@ -90,25 +90,101 @@ frequency_range = c./lambda_range;
 clear
 
 % Question a)
-%The clear command clears text from the command window. 
+%The clear command clears text from the command window and workspace. For
+%example, computing the variable 'x=1.5' then proceeding the line with the
+%function 'clear' would remove it from the workspace/command window.
 
-x=1.5; 
+x = 1.5;
+clear
 
+%Question b) The who command lists the current variables within the
+%workspace. 
 
+b = [1:4];
+c = [2:7]';
+%who;
+%The 'whos' command lists the current variables and their respective sizes
+%and types
+%whos;
+
+%Question c The semicolon command suppresses the output of any command. 
+x = 1.5;
+
+%Question 
 
 %% Q5 - PROGRAM FLOW [12 MARKS]
 clear
+
+%Question b) 
+%{
+h = 4000 %Initial height in metres
+t = 0 % Time in seconds
+parachuteDeployed = false;
+transponderActive = false; 
+
+while h > 0
+    t = t + 2 % Time progress in 2-second steps 
+    h = h - 200 % Height decreases 
+
+
+    % Deploy parachute at 2700m 
+    if h <= 2700 && ~parachuteDeployed 
+        fprintf('Parachute deployed at t=%d seconds, height=%d m/n', t, h);
+        parachuteDeployed = true;
+    end
+
+
+% Activate transponder at 0m 
+if h <= 0 && ~transponderActive
+    fprintf('Transponder Active at t=%d seconds, height=%d m/n', t, h);
+    transponderActive = true;
+end
+end 
+%}
+
+% Question c) 
+
+%{
+ h = 10000; % Initial height in metres
+t = 0; % Initial Time 
+v = 200; % Initial velocity (Constant)
+parachuteDeployed = false;
+
+while h>2700
+    t = t + 2;
+    h = h - 2*v;
+
+    % Deploy parachute at 2700m 
+    if h <= 2700 && ~parachuteDeployed
+        fprintf('Parachute deployed at t=%d seconds', t)
+        parachuteDeployed = true;
+       
+    end
+end 
+%}
+
+
 
 
 %% Q6 FORMAT AND PRINT TEXT TO SCREEN AND LOOPS [13 MARKS]
 clear
 
+time = [1300 1600 1900];
+Temperature = [19 20 18];
+Humidity = [55 49 59];
+UV_level = [4 2 1];
+
+
+datastr = sprintf('Time = %d \nTemperature =%d \nHumidity= %d \nUV_level = %d \n', time(1), Temperature(1), Humidity(1), UV_level(1));
+disp(datastr);
+
+datastr = sprintf('Time = %d \nTemperature =%d \nHumidity= %d \nUV_level = %d', time(2), Temperature(2), Humidity(2), UV_level(2));
+disp(datastr);
+
 
 
 %% Q7 - FOR LOOPS AND DISPLAYING DATA [16 MARKS]
 clear
-
-
 
 
 %% Q8 - USING THE SWITCH STATEMENT [10 MARKS]
