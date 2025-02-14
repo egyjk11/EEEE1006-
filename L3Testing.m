@@ -1,14 +1,14 @@
 % Jonathon Kluth egyjk11@nottingham.ac.uk
 clear
 
-message = 'The speed of an airplane is';
-speed_of_plane = 500;
-units='m/s';
+str = 'Hello, what is the time' 
 
-disp(message);
-disp(speed_of_plane);
-disp(units)
+str(20) = "n";
 
+sar = str;
 
+replace(sar,' ','*')
 
+greetings = sar(1:5);
+disp(greetings)
 

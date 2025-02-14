@@ -100,12 +100,12 @@ clear
 %Question b) The who command lists the current variables within the
 %workspace. 
 
-b = [1:4];
-c = [2:7]';
+b = 1:4;
+c = (2:7)';
 %who;
 %The 'whos' command lists the current variables and their respective sizes
 %and types
-%whos;
+%whos; 
 
 %Question c The semicolon command suppresses the output of any command. 
 x = 1.5;
@@ -116,27 +116,27 @@ x = 1.5;
 clear
 
 %Question b) 
-%{
-h = 4000 %Initial height in metres
-t = 0 % Time in seconds
+
+h = 4000; %Initial height in metres
+t = 0; % Time in seconds
 parachuteDeployed = false;
 transponderActive = false; 
-
+%{
 while h > 0
-    t = t + 2 % Time progress in 2-second steps 
-    h = h - 200 % Height decreases 
+    t = t + 2; % Time progress in 2-second steps 
+    h = h - 200; % Height decreases 
 
 
     % Deploy parachute at 2700m 
     if h <= 2700 && ~parachuteDeployed 
-        fprintf('Parachute deployed at t=%d seconds, height=%d m/n', t, h);
+        fprintf('Parachute deployed at t=%d seconds, height=%d metres', t, h);
         parachuteDeployed = true;
     end
 
 
 % Activate transponder at 0m 
 if h <= 0 && ~transponderActive
-    fprintf('Transponder Active at t=%d seconds, height=%d m/n', t, h);
+    fprintf('Transponder Active at t=%d seconds, height=%d metres', t, h);
     transponderActive = true;
 end
 end 
@@ -168,23 +168,37 @@ end
 
 %% Q6 FORMAT AND PRINT TEXT TO SCREEN AND LOOPS [13 MARKS]
 clear
+%{
+city = 'Nottingham'; % City where data has been collected
+time = [1300 1600 1900]; %Times in 24hr format
+Temperature = [19 20 18]; % Temperature in °C
+Humidity = [55 49 59]; % Air Humidity in %
+UV_level = [4 2 1]; % UV level in factor
 
-time = [1300 1600 1900];
-Temperature = [19 20 18];
-Humidity = [55 49 59];
-UV_level = [4 2 1];
+fprintf('Data Logging intitated - 27/7/2023 \nLocation - %s \n', city); %Print Header
 
+for x=1:length(time) %Loop for each entry of data in the array
+fprintf('\nTime = %d \nTemperature = %d°C \nHumidity= %d%% \nUV_level = %d \n', time(x), Temperature(x), Humidity(x), UV_level(x));
+end
 
-datastr = sprintf('Time = %d \nTemperature =%d \nHumidity= %d \nUV_level = %d \n', time(1), Temperature(1), Humidity(1), UV_level(1));
-disp(datastr);
+fprintf('Data logging terminated'); %Print footer
+ %}
 
-datastr = sprintf('Time = %d \nTemperature =%d \nHumidity= %d \nUV_level = %d', time(2), Temperature(2), Humidity(2), UV_level(2));
-disp(datastr);
+% The script has specific values within the arrays, rather than collecting
+% or receiving this data in real time. The values are hardcoded into the
+% script. 
 
 
 
 %% Q7 - FOR LOOPS AND DISPLAYING DATA [16 MARKS]
-clear
+
+    
+
+
+
+
+
+
 
 
 %% Q8 - USING THE SWITCH STATEMENT [10 MARKS]
