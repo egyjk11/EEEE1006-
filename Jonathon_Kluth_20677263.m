@@ -144,7 +144,7 @@ end
 
 % Question c) 
 
-%{
+
  h = 10000; % Initial height in metres
 t = 0; % Initial Time 
 v = 200; % Initial velocity (Constant)
@@ -161,28 +161,32 @@ while h>2700
        
     end
 end 
-%}
+
 
 
 
 
 %% Q6 FORMAT AND PRINT TEXT TO SCREEN AND LOOPS [13 MARKS]
 clear
-%{
+
 city = 'Nottingham'; % City where data has been collected
 time = [1300 1600 1900]; %Times in 24hr format
 Temperature = [19 20 18]; % Temperature in °C
 Humidity = [55 49 59]; % Air Humidity in %
 UV_level = [4 2 1]; % UV level in factor
 
-fprintf('Data Logging intitated - 27/7/2023 \nLocation - %s \n', city); %Print Header
+speedstr1 = sprintf('Data Logging intitated - 27/7/2023 \nLocation - %s \n', city); %Print Header
+disp(speedstr1)
 
 for x=1:length(time) %Loop for each entry of data in the array
-fprintf('\nTime = %d \nTemperature = %d°C \nHumidity= %d%% \nUV_level = %d \n', time(x), Temperature(x), Humidity(x), UV_level(x));
+speedstr2 = sprintf('\nTime = %d \nTemperature = %d°C \nHumidity= %d%% \nUV_level = %d \n', time(x), Temperature(x), Humidity(x), UV_level(x));
+disp(speedstr2)
 end
 
-fprintf('Data logging terminated'); %Print footer
- %}
+speedstr3 = sprintf('Data logging terminated');
+disp(speedstr3)
+%Print footer
+ 
 
 % The script has specific values within the arrays, rather than collecting
 % or receiving this data in real time. The values are hardcoded into the
