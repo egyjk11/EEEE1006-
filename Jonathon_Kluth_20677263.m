@@ -196,11 +196,71 @@ disp(speedstr3)
 
 %% Q7 - FOR LOOPS AND DISPLAYING DATA [16 MARKS]
 
-    
+% Question a)
+%{
+% Fibonacci sequence - First 50 terms
+n = 50; % Number of terms
+fib_seq = zeros(n, 1); % Preallocate array for efficiency
+
+
+% Initial values
+fib_seq(1) = 0; % First term in the Fibonacci sequence 
+fib_seq(2) = 1; % Second Term in the Fibonacci sequence
+
+% Compute Fibonacci sequence using a loop
+for  n = 3:n % Exclude first two terms 
+    fib_seq(n) = fib_seq(n-1) + fib_seq(n-2); % Formula for the sequence 
+    fprintf('\n For n = %d \n Fibonacci number = %.4f', n, fib_seq(n)) % Print command to display sequence
+end
+%}
+% Question b and Question c)
+
+% Fibonacci sequence - First 50 terms
+n = 50; % Number of terms
+fib_seq = zeros(n, 1); % Preallocate array for efficiency
+golden_ratio = zeros(n,1);
+
+% Initial values
+fib_seq(1) = 0; % First term in the Fibonacci sequence 
+fib_seq(2) = 1; % Second Term in the Fibonacci sequence
 
 
 
+% Compute Fibonacci sequence using a loop
+for  n = 3:n % Exclude first two terms 
+    fib_seq(n) = fib_seq(n-1) + fib_seq(n-2); % Formula for the sequence 
+    fprintf('\n For n = %d \n Fibonacci number = %.4f', n, fib_seq(n)) % Print command to display sequence
+    golden_ratio(n) = fib_seq(n)/fib_seq(n-1);
+    fprintf('\n Golden Ratio Number = %.4f', golden_ratio(n))
+end
 
+% Question d)
+
+% Fibonacci sequence - First 50 terms
+n = 50; % Number of terms
+fib_seq = zeros(n, 1); % Preallocate array for efficiency
+golden_ratio = zeros(n,1);
+
+% Initial values
+fib_seq(1) = 0; % First term in the Fibonacci sequence 
+fib_seq(2) = 1; % Second Term in the Fibonacci sequence
+
+% Compute Fibonacci sequence using a loop
+
+fprintf('Fibonacci Sequence and Approximations for Golden Ratio\n')
+
+for  n = 3:n % Exclude first two terms 
+    fib_seq(n) = fib_seq(n-1) + fib_seq(n-2); % Formula for the sequence
+    golden_ratio(n) = fib_seq(n)/fib_seq(n-1);
+    if ((golden_ratio(n) - golden_ratio(n-1))/golden_ratio(n-1) > 0.001 )
+     fprintf('\n For n = %d  F = %d', n, fib_seq(n)) % Print command to display sequence
+     fprintf(' phi = %.5f', golden_ratio(n))
+    end
+end
+ 
+% The advantage of the approach taken in part d is that the output of the
+% function is only printed until a desired value is achieved, rather than
+% (in question c) where the entire array is printed. 
 
 
 
