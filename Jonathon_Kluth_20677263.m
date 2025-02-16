@@ -70,8 +70,8 @@ meu = 4*pi*1e-7;
 
 c = sqrt(1/(meu*Epsilon));
 
-%speedstr = sprintf('The speed of light is %f m/s', c);
-%disp(speedstr);
+speedstr = sprintf('The speed of light is %f m/s', c);
+disp(speedstr);
 
 %Question bii) 
 
@@ -79,7 +79,7 @@ lambda_range = [28e-6, 0.6e-6];
 
 frequency_range = c./lambda_range;
 
-%fprintf('Frequency range: %.2e Hz to %.2e Hz\n', frequency_range(1), frequency_range(2));
+fprintf('Frequency range: %.2e Hz to %.2e Hz\n', frequency_range(1), frequency_range(2));
 
 
 
@@ -102,10 +102,10 @@ clear
 
 b = 1:4;
 c = (2:7)';
-%who;
+who;
 %The 'whos' command lists the current variables and their respective sizes
 %and types
-%whos; 
+whos; 
 
 %Question c The semicolon command suppresses the output of any command. 
 x = 1.5;
@@ -121,7 +121,7 @@ h = 4000; %Initial height in metres
 t = 0; % Time in seconds
 parachuteDeployed = false;
 transponderActive = false; 
-%{
+
 while h > 0
     t = t + 2; % Time progress in 2-second steps 
     h = h - 200; % Height decreases 
@@ -140,7 +140,7 @@ if h <= 0 && ~transponderActive
     transponderActive = true;
 end
 end 
-%}
+
 
 % Question c) 
 
@@ -197,7 +197,7 @@ disp(speedstr3)
 %% Q7 - FOR LOOPS AND DISPLAYING DATA [16 MARKS]
 
 % Question a)
-%{
+
 % Fibonacci sequence - First 50 terms
 n = 50; % Number of terms
 fib_seq = zeros(n, 1); % Preallocate array for efficiency
@@ -212,7 +212,7 @@ for  n = 3:n % Exclude first two terms
     fib_seq(n) = fib_seq(n-1) + fib_seq(n-2); % Formula for the sequence 
     fprintf('\n For n = %d \n Fibonacci number = %.4f', n, fib_seq(n)) % Print command to display sequence
 end
-%}
+
 % Question b and Question c)
 
 % Fibonacci sequence - First 50 terms
@@ -223,8 +223,6 @@ golden_ratio = zeros(n,1);
 % Initial values
 fib_seq(1) = 0; % First term in the Fibonacci sequence 
 fib_seq(2) = 1; % Second Term in the Fibonacci sequence
-
-
 
 % Compute Fibonacci sequence using a loop
 for  n = 3:n % Exclude first two terms 
@@ -256,6 +254,7 @@ for  n = 3:n % Exclude first two terms
      fprintf('\n For n = %d  F = %d', n, fib_seq(n)) % Print command to display sequence
      fprintf(' phi = %.5f', golden_ratio(n))
     end
+    fprintf('Golden Ratio converged to within 0.1%%')
 end
  
 % The advantage of the approach taken in part d is that the output of the
@@ -267,6 +266,41 @@ end
 
 %% Q8 - USING THE SWITCH STATEMENT [10 MARKS]
 clear
+
+msg = "What Currency would you like to convert to?"; 
+
+Currencies = menu(msg, 'Euro', 'US Dollars', 'Chinese Yuan', 'Swiss Francs')';
+
+GBP = input('How much money would you like to exchange? ');
+
+if GBP > 0
+switch Currencies 
+    case 1 
+        Euro = GBP*1.17;
+        fprintf('You have exchanged £%.2f for €%.2f Euros', GBP, Euro)
+    case 2 
+        USDollars = GBP*1.27;
+        fprintf('You have exchanged £%.2f for $%.2f', GBP, USDollars)
+    case 3 
+        ChineseYuan = GBP*9.03;
+        fprintf('You have exchanged £%.2f for ¥%.2f', GBP, ChineseYuan)
+    case 4
+        SwissFrancs = GBP*1.09;
+        fprintf('You have exchanged £%.2f for CHF %.2f', GBP, SwissFrancs)
+    otherwise
+        fprintf('You have exited the dialog window')
+end 
+else 
+    fprintf('Error: You cannot convert without money');
+end 
+    
+
+
+
+
+
+
+
 
 %% PRESENTATION AND FORMATTING [11 MARKS]
 
