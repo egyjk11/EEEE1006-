@@ -42,17 +42,18 @@ std(b);
 % range. Improving the number of data points sampled would increase the
 % accuracy and bring the value closer to 0.5.
 
-z = linspace(0, 2*pi, 500);
-Current = 0.1*sin(z);
+z = linspace(0, 2*pi, 500); 
+Current = 0.1*sin(z); % Multiplied by 0.1 to give the limits of the function
 % plot(z, Current);
-ylim([-0.1 0.1]);
 
-rms = sqrt(mean(z));
+Current = Current.^2 % Squaring current first to find RMS 
+
+rms = sqrt(mean(Current)); % Calculating RMS 
 R = 1000;
 
 Power = rms*R;
 
-% Avg power dissipated = 1.7725e+03
+% Avg power dissipated = 70.6 W
 
 close all;
 
@@ -95,22 +96,41 @@ clear
 %function 'clear' would remove it from the workspace/command window.
 
 x = 1.5;
-clear
+clearvars, clc
+x = 2.5;
 
 %Question b) The who command lists the current variables within the
 %workspace. 
 
 b = 1:4;
 c = (2:7)';
-who;
+who
+
 %The 'whos' command lists the current variables and their respective sizes
 %and types
-whos; 
+whos
 
-%Question c The semicolon command suppresses the output of any command. 
-x = 1.5;
+%Question c The semicolon command suppresses the output of any command,
+%stopping from printing to screen. 
 
-%Question 
+t = 1.5
+
+
+%Question d) The sound function converts of signal data into sound that is
+%played through the speaker of the computer, outputting at a frequency of
+%8192hz
+
+y=sin(x)
+sound(y)
+
+% Roots returns the roots of a polynomial 
+z = [4, 7, 3]
+p = roots(z)
+
+% abs returns the absolute value of each element in an input 
+
+u = [3.44, -6.79, -9.2, -2]'
+y=abs(u)
 
 %% Q5 - PROGRAM FLOW [12 MARKS]
 clear
@@ -129,14 +149,14 @@ while h > 0
 
     % Deploy parachute at 2700m 
     if h <= 2700 && ~parachuteDeployed 
-        fprintf('Parachute deployed at t=%d seconds, height=%d metres', t, h);
+        fprintf('Parachute deployed at t=%d seconds, height=%d metres \n', t, h);
         parachuteDeployed = true;
     end
 
 
 % Activate transponder at 0m 
 if h <= 0 && ~transponderActive
-    fprintf('Transponder Active at t=%d seconds, height=%d metres', t, h);
+    fprintf('\nTransponder Active at t=%d seconds, height=%d metres', t, h);
     transponderActive = true;
 end
 end 
@@ -179,7 +199,7 @@ speedstr1 = sprintf('Data Logging intitated - 27/7/2023 \nLocation - %s \n', cit
 disp(speedstr1)
 
 for x=1:length(time) %Loop for each entry of data in the array
-speedstr2 = sprintf('\nTime = %d \nTemperature = %d°C \nHumidity= %d%% \nUV_level = %d \n', time(x), Temperature(x), Humidity(x), UV_level(x));
+speedstr2 = sprintf('\nTime = %d \nTemperature = %d°C \nHumidity = %d%% \nUV_level = %d \n', time(x), Temperature(x), Humidity(x), UV_level(x));
 disp(speedstr2)
 end
 
@@ -254,8 +274,8 @@ for  n = 3:n % Exclude first two terms
      fprintf('\n For n = %d  F = %d', n, fib_seq(n)) % Print command to display sequence
      fprintf(' phi = %.5f', golden_ratio(n))
     end
-    fprintf('Golden Ratio converged to within 0.1%%')
 end
+ fprintf(' \nGolden Ratio converged to within 0.1%%')
  
 % The advantage of the approach taken in part d is that the output of the
 % function is only printed until a desired value is achieved, rather than
@@ -267,31 +287,31 @@ end
 %% Q8 - USING THE SWITCH STATEMENT [10 MARKS]
 clear
 
-msg = "What Currency would you like to convert to?"; 
+msg = "What Currency would you like to convert to?"; % Dialog box displayed when opening menu 
 
-Currencies = menu(msg, 'Euro', 'US Dollars', 'Chinese Yuan', 'Swiss Francs')';
+Currencies = menu(msg, 'Euro', 'US Dollars', 'Chinese Yuan', 'Swiss Francs')'; % Selection of inputs for the various currencies 
 
-GBP = input('How much money would you like to exchange? ');
+GBP = input('How much money would you like to exchange? £'); % Function for the input amount 
 
-if GBP > 0
+if GBP > 0 % If statement to prevent negative conversions 
 switch Currencies 
     case 1 
-        Euro = GBP*1.17;
+        Euro = GBP*1.17; % Pounds to Euro conversion 
         fprintf('You have exchanged £%.2f for €%.2f Euros', GBP, Euro)
     case 2 
-        USDollars = GBP*1.27;
+        USDollars = GBP*1.27; % Pounds to Dollar conversion 
         fprintf('You have exchanged £%.2f for $%.2f', GBP, USDollars)
     case 3 
-        ChineseYuan = GBP*9.03;
+        ChineseYuan = GBP*9.03; % Pounds to Yen conversion 
         fprintf('You have exchanged £%.2f for ¥%.2f', GBP, ChineseYuan)
     case 4
-        SwissFrancs = GBP*1.09;
+        SwissFrancs = GBP*1.09; % Pounds to Francs conversion
         fprintf('You have exchanged £%.2f for CHF %.2f', GBP, SwissFrancs)
     otherwise
-        fprintf('You have exited the dialog window')
+        fprintf('You have exited the dialog window') %Msg to show if no money to be converted
 end 
 else 
-    fprintf('Error: You cannot convert without money');
+    fprintf('Error: You cannot convert without money'); %Msg to show if <0 £ is trying to be converted
 end 
     
 
