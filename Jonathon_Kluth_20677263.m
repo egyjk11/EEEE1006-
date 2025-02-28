@@ -113,23 +113,23 @@ whos
 %Question c The semicolon command suppresses the output of any command,
 %stopping from printing to screen. 
 
-t = 1.5
+t = 1.5;
 
 
 %Question d) The sound function converts of signal data into sound that is
 %played through the speaker of the computer, outputting at a frequency of
 %8192hz
 
-y=sin(x)
+y=sin(x);
 sound(y)
 
 % Roots returns the roots of a polynomial 
-z = [4, 7, 3]
+z = [4, 7, 3];
 p = roots(z)
 
 % abs returns the absolute value of each element in an input 
 
-u = [3.44, -6.79, -9.2, -2]'
+u = [3.44, -6.79, -9.2, -2]';
 y=abs(u)
 
 %% Q5 - PROGRAM FLOW [12 MARKS]
